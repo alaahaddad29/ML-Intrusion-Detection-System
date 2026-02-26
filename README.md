@@ -1,26 +1,8 @@
 ## ML-Powered Intrusion Detection System (IDS)
 
-## Project Overview
-
-This project implements a Machine Learning-based Intrusion Detection System (IDS) to monitor network traffic and classify connections as either **Normal** or various types of **Attack**. It demonstrates a practical application of data science techniques in a critical cybersecurity context.
-
-The goal was to build a robust, high-accuracy classifier capable of detecting known and novel network threats, reducing false positives, and providing actionable security insights.
-
-
-## Key Results & Performance
-
 The model classifies network traffic as normal or malicious using the **Random Forest** algorithm on the **NSL-KDD** dataset. The model achieves **99% overall accuracy** across four major attack categories.
 
 --
-
-## 📋 Table of Contents
-
-- [Overview](#overview)
-- [Dataset](#dataset)
-- [Methodology](#methodology)
-- [Results](#results)
-
----
 
 ## 📌 Overview
 
