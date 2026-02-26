@@ -9,12 +9,69 @@ The goal was to build a robust, high-accuracy classifier capable of detecting kn
 
 ## Key Results & Performance
 
-The model was rigorously tested on a held-out validation set. The performance metrics below showcase its efficacy in a high-stakes security environment
+The model classifies network traffic as normal or malicious using the **Random Forest** algorithm on the **NSL-KDD** dataset. The model achieves **99% overall accuracy** across four major attack categories.
 
-This IDS model was trained and evaluated using the NSL-KDD dataset, which contains various categorized network flow records.
+--
 
-The data preprocessing involved:
-* Handling imbalanced classes (crucial for IDS).
-* One-Hot Encoding of categorical features (e.g., protocol type, flag).
-* Feature Scaling (Normalization/Standardization).
+## 📋 Table of Contents
 
+- [Overview](#overview)
+- [Dataset](#dataset)
+- [Methodology](#methodology)
+- [Results](#results)
+
+---
+
+## 📌 Overview
+
+Network intrusion detection is a critical component of modern cybersecurity. This project applies supervised machine learning to automatically detect and classify four types of network attacks:
+
+| Attack Type | Description |
+|---|---|
+| **DoS** | Denial of Service — flooding a system to deny legitimate access |
+| **Probe** | Surveillance attacks scanning for vulnerabilities |
+| **R2L** | Remote-to-Local — unauthorized access from a remote machine |
+| **U2R** | User-to-Root — privilege escalation attacks |
+
+The model applies feature selection (13 optimal features) and cross-validation to ensure robust, generalizable performance.
+
+---
+
+## 📂 Dataset
+
+**NSL-KDD** — an improved version of the KDD Cup 99 dataset, widely used as a benchmark for IDS research.
+
+- Removes duplicate records present in KDD Cup 99
+- Provides a balanced distribution across attack categories
+- Split into training and test sets for fair evaluation
+
+> Dataset source: [Canadian Institute for Cybersecurity](https://www.unb.ca/cic/datasets/nsl.html)
+
+---
+
+## ⚙️ Methodology
+
+1. **Data Preprocessing** — handling missing values, encoding categorical features, normalization
+2. **Feature Selection** — selected 13 most informative features using feature importance analysis
+3. **Model Training** — Random Forest classifier trained with cross-validation
+4. **Evaluation** — assessed using Accuracy, F1-Score, Precision, Recall, and Confusion Matrix
+
+---
+
+## 📊 Results
+
+### Cross-Validation Performance (13 Selected Features)
+
+| Attack Type | F-Score | Recall | Accuracy | Precision |
+|---|---|---|---|---|
+| **DoS** | 99.70% | 99.71% | 99.80% | 99.70% |
+| **Probe** | 98.57% | 98.47% | 99.10% | 98.67% |
+| **R2L** | 96.38% | 96.10% | 97.46% | 96.69% |
+| **U2R** | 87.74% | 89.55% | 99.65% | 87.54% |
+| **Average** | **95.60%** | **95.95%** | **99.00%** | **95.65%** |
+
+### Key Highlights
+- ✅ **99% overall accuracy** across all attack categories
+- ✅ **99.80% accuracy** on DoS attacks — the most common attack type
+- ✅ Low false positive rate on DoS (109 FP out of ~16,000 samples)
+- ✅ Feature selection reduced dimensionality while maintaining high performance
